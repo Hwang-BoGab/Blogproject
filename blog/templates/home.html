@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+
+{% block contents %}
+<body>
+<br>
+{% for blog in posts %}
+    <div class = "container-fluid">
+    <div class="card">
+    <div class="card-body">
+    <h3 class="card-title">{{blog.title}}</h3>
+    <h5 class="card-subtitle mb-2 text-muted">{{blog.pub_date}}</h5>
+    <p class="card-text">{{blog.summary}}</p>
+    <a href="{%url 'detail' blog.id%}" class="card-link">...more</a>
+ 
+  </div>
+</div><br>
+    </div>
+{% endfor%}
+<div class = "container">
+
+{% if posts.has_previous %}
+<a href="?page=1">First</a>
+<a href="?page={{posts.previous_page_number}}">Previous</a>
+{% endif%}
+
+<span>{{posts.number}}</span>
+<span>of</span>
+<span>{{posts.paginator.num_pages}}</span>
+
+{% if posts.has_next %}
+<a href="?page={{posts.next_page_number}}">Next</a>
+<a href="?page={{posts.paginator.num_pages}}">Last</a>
+{% endif %}
+</div>
+
+</body>
+{% endblock %}

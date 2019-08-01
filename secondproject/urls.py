@@ -28,3 +28,4 @@ urlpatterns = [
     path('portfolio/', portfolio.views.portfolio, name='portfolio'),
     path('accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ 
